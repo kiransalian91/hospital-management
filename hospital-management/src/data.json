@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Hospital A",
+    "isFolder": true,
+    "children": [
+      {
+        "name": "Shoulder",
+        "isFolder": true
+      },
+      {
+        "name": "Shoulder",
+        "isFolder": true
+      },
+      {
+        "name": "Stomack",
+        "isFolder": true,
+        "children": [
+          {
+            "name": "Crohn's Disease",
+            "isFolder": true
+          },
+          {
+            "name": "Irritable Bowel Symbrome",
+            "isFolder": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hospital B",
+    "isFolder": true,
+    "children": [
+      {
+        "name": "Gamling Addiction",
+        "isFolder": true
+      },
+      {
+        "name": "Anxiety",
+        "isFolder": true
+      },
+      {
+        "name": "Depression",
+        "isFolder": true
+      }
+    ]
+  }
+]
