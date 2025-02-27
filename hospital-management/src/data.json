@@ -1,47 +1,57 @@
 [
   {
+    "id" : "1",
     "name": "Hospital A",
     "isFolder": true,
     "children": [
       {
+        "id" : "2",
         "name": "Shoulder",
-        "isFolder": true
+        "isFolder": false
       },
       {
-        "name": "Shoulder",
-        "isFolder": true
+        "id" : "3",
+        "name": "Knee",
+        "isFolder": false
       },
       {
+        "id" : "4",
         "name": "Stomack",
         "isFolder": true,
         "children": [
           {
+            "id" : "5",
             "name": "Crohn's Disease",
-            "isFolder": true
+            "isFolder": false
           },
           {
+            "id" : "6",
             "name": "Irritable Bowel Symbrome",
-            "isFolder": true
+            "isFolder": false
           }
         ]
       }
     ]
   },
   {
+    "id" : "7",
     "name": "Hospital B",
     "isFolder": true,
     "children": [
       {
+        "id" : "8",
         "name": "Gamling Addiction",
-        "isFolder": true
+        "isFolder": false
       },
       {
+        "id" : "9",
         "name": "Anxiety",
-        "isFolder": true
+        "isFolder": false
       },
       {
+        "id" : "10",
         "name": "Depression",
-        "isFolder": true
+        "isFolder": false
       }
     ]
   }

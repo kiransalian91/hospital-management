@@ -1,2 +1,17 @@
 @import './base.css';
 
+
+.container {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.add-icon {
+  width: 20px;
+  margin-left: 20px;
+}
+
+.delete-icon {
+  width: 20px;
+  margin-left: 20px; 
+}
