@@ -10,27 +10,26 @@
   </div>
 </template>
 <script setup lang="ts">
-import List from "./components/List.vue";
-import { storeToRefs } from 'pinia';
-import { useNodeStore } from './stores/nodeStore';
+import List from './components/List.vue'
+import { storeToRefs } from 'pinia'
+import { useNodeStore } from './stores/nodeStore'
 
-const nodeStore = useNodeStore();
-const { nodes } = storeToRefs(nodeStore);
+const nodeStore = useNodeStore()
+const { nodes } = storeToRefs(nodeStore)
 
-const addNodeToList = ({ parentId, isFolder }: { parentId: string, isFolder: boolean }) => {
-  const name = prompt('Enter node name:');
-  if (name) nodeStore.addNode(parentId, name, isFolder);
-};
+const addNodeToList = ({ parentId, isFolder }: { parentId: string; isFolder: boolean }) => {
+  const name = prompt('Enter node name:')
+  if (name) nodeStore.addNode(parentId, name, isFolder)
+}
 
 const deleteNodeFromList = (nodeId: string) => {
-  nodeStore.deleteNode(nodeId);
-};
+  nodeStore.deleteNode(nodeId)
+}
 
 const editNodeFromList = (nodeId: string) => {
-  const newName = prompt('Enter new name:');
-  if (newName) nodeStore.editNode(nodeId, newName);
-};
-
+  const newName = prompt('Enter new name:')
+  if (newName) nodeStore.editNode(nodeId, newName)
+}
 </script>
 <style>
 .title {

@@ -1,41 +1,31 @@
 <template>
   <div class="container">
     <div v-for="node in list" :key="node.id" class="node">
-      <span
-        v-if="node.isFolder"
-        @click="toggleExpand(node)"
-        class="expand-icon"
-      >
-        {{ node.isExpanded ? " - " : " + " }}
+      <span v-if="node.isFolder" @click="toggleExpand(node)" class="expand-icon">
+        {{ node.isExpanded ? ' - ' : ' + ' }}
       </span>
       <span>{{ node.name }}</span>
       <span class="menu" @click="toggleMenu(node.id, $event)"> : </span>
       <Teleport to="body">
-        <div
-          v-if="activeNodeId === node.id"
-          class="modal"
-          :style="modalPosition"
-        >
-      <div v-if="node.isFolder" class="add-buttons">
-        <div @click="handleAddNode(node.id, true)" class="button-update">
-          <span class="add-item"> + </span>
-          <span>Add Group</span>
-        </div>
-        <div @click="handleAddNode(node.id, false)" class="button-update">
-          <span class="add-item"> + </span>
-          <span>Add Clinicians</span>
-        </div>
-      </div>
+        <div v-if="activeNodeId === node.id" class="modal" :style="modalPosition">
+          <div v-if="node.isFolder" class="add-buttons">
+            <div @click="handleAddNode(node.id, true)" class="button-update">
+              <span class="add-item"> + </span>
+              <span>Add Group</span>
+            </div>
+            <div @click="handleAddNode(node.id, false)" class="button-update">
+              <span class="add-item"> + </span>
+              <span>Add Clinicians</span>
+            </div>
+          </div>
 
           <div @click="handleDeleteNode(node.id)" class="button-update">
             <img src="../assets/delete.png" class="icon" alt="Delete" />
-            <span>{{
-              node.isFolder ? "Delete Group" : "Remove Clinicians"
-            }}</span>
+            <span>{{ node.isFolder ? 'Delete Group' : 'Remove Clinicians' }}</span>
           </div>
           <div @click="handleEditNode(node.id)" class="button-update">
             <img src="../assets/edit-icon.webp" class="icon" alt="Edit" />
-            <span>{{ node.isFolder ? "Edit Group" : "Edit Clinicians" }}</span>
+            <span>{{ node.isFolder ? 'Edit Group' : 'Edit Clinicians' }}</span>
           </div>
         </div>
       </Teleport>
@@ -51,46 +41,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import List from "./List.vue";
+import { ref } from 'vue'
+import List from './List.vue'
 
-defineProps<{ list: any[] }>();
+defineProps<{ list: any[] }>()
 
-const emit = defineEmits([
-  "addNodeToList",
-  "deleteNodeFromList",
-  "editNodeFromList",
-]);
-const activeNodeId = ref<string | null>(null);
-const modalPosition = ref({ top: "0px", left: "0px" });
+const emit = defineEmits(['addNodeToList', 'deleteNodeFromList', 'editNodeFromList'])
+const activeNodeId = ref<string | null>(null)
+const modalPosition = ref({ top: '0px', left: '0px' })
 
 const toggleExpand = (node: any) => {
-  node.isExpanded = !node.isExpanded;
-};
+  node.isExpanded = !node.isExpanded
+}
 
 const toggleMenu = (nodeId: string, event: MouseEvent) => {
-  activeNodeId.value = activeNodeId.value === nodeId ? null : nodeId;
+  activeNodeId.value = activeNodeId.value === nodeId ? null : nodeId
 
   modalPosition.value = {
     top: `${event.clientY}px`,
     left: `${event.clientX}px`,
-  };
-};
+  }
+}
 
 const handleAddNode = (nodeId: string, isFolder: boolean) => {
-  emit("addNodeToList", { parentId: nodeId, isFolder });
-  activeNodeId.value = null;
-};
+  emit('addNodeToList', { parentId: nodeId, isFolder })
+  activeNodeId.value = null
+}
 
 const handleDeleteNode = (nodeId: string) => {
-  emit("deleteNodeFromList", nodeId);
-  activeNodeId.value = null; 
-};
+  emit('deleteNodeFromList', nodeId)
+  activeNodeId.value = null
+}
 
 const handleEditNode = (nodeId: string) => {
-  emit("editNodeFromList", nodeId);
-  activeNodeId.value = null; 
-};
+  emit('editNodeFromList', nodeId)
+  activeNodeId.value = null
+}
 </script>
 
 <style scoped>
